@@ -1,0 +1,22 @@
+- name: convert_mp4_to_mp3
+  group: media
+  enabled: true
+  plugins:
+  - name: async_converter
+    config:
+      max_workers: 4
+      verbose: true
+
+  - name: notifier
+    config:
+      method: email
+      recipients: bhuvnesh@example.com
+
+- name: deploy_model
+  group: deploy
+  enabled: true
+  plugins:
+  - name: docker_builder
+    config:
+      tag: v1.2
+      auto_push: false
